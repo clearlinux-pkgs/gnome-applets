@@ -4,7 +4,7 @@
 #
 Name     : gnome-applets
 Version  : 3.24.1
-Release  : 2
+Release  : 3
 URL      : https://download.gnome.org/sources/gnome-applets/3.24/gnome-applets-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.24/gnome-applets-3.24.1.tar.xz
 Summary  : No detailed summary available
