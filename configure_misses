@@ -1,0 +1,21 @@
+Configure miss: whether to enable debugging
+Configure miss: whether C compiler accepts -Werror=unknown-warning-option
+Configure miss: whether the linker accepts -Wl,-fatal_warnings
+Configure miss: wireless-tools >= 28pre9
+Configure miss: GUCHARMAP
+Configure miss: TRACKER_SEARCH_BAR
+Configure miss: jw
+Configure miss: apm_read in -lapm
+Configure miss: su
+Configure miss: cpufreq.h usability
+Configure miss: cpufreq.h presence
+Configure miss: cpufreq.h
+Configure miss: drive-button.c:550:50: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: util.c:44:4: warning: format not a string literal, format string not checked [-Wformat-nonliteral]
+
+Configure miss: main.c:341:13: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: netspeed.c:390:2: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: netspeed.c:1170:55: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
