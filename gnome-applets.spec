@@ -4,7 +4,7 @@
 #
 Name     : gnome-applets
 Version  : 3.28.0
-Release  : 8
+Release  : 9
 URL      : https://download.gnome.org/sources/gnome-applets/3.28/gnome-applets-3.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.28/gnome-applets-3.28.0.tar.xz
 Summary  : No detailed summary available
@@ -14,18 +14,11 @@ Requires: gnome-applets-lib
 Requires: gnome-applets-data
 Requires: gnome-applets-doc
 Requires: gnome-applets-locales
-BuildRequires : automake
-BuildRequires : automake-dev
 BuildRequires : gettext
-BuildRequires : gettext-bin
 BuildRequires : intltool
 BuildRequires : itstool
-BuildRequires : libtool
-BuildRequires : libtool-dev
 BuildRequires : libxslt-bin
-BuildRequires : m4
 BuildRequires : perl(XML::Parser)
-BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(adwaita-icon-theme)
 BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(dbus-glib-1)
@@ -45,7 +38,6 @@ BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(polkit-gobject-1)
 BuildRequires : pkgconfig(sm)
 BuildRequires : pkgconfig(upower-glib)
-Patch1: build.patch
 
 %description
 GNOME-Applets
@@ -89,15 +81,14 @@ locales components for the gnome-applets package.
 
 %prep
 %setup -q -n gnome-applets-3.28.0
-%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522219442
-%reconfigure --disable-static --disable-nls
+export SOURCE_DATE_EPOCH=1522958520
+%configure --disable-static --disable-nls
 make  %{?_smp_mflags}
 
 %check
@@ -108,7 +99,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522219442
+export SOURCE_DATE_EPOCH=1522958520
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-applets-3.0
@@ -724,6 +715,17 @@ rm -rf %{buildroot}
 /usr/share/help/C/multiload/figures/system_monitor.png
 /usr/share/help/C/multiload/index.docbook
 /usr/share/help/C/multiload/legal.xml
+/usr/share/help/C/netspeed_applet/figures/details.png
+/usr/share/help/C/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/C/netspeed_applet/figures/ethernet.png
+/usr/share/help/C/netspeed_applet/figures/loopback.png
+/usr/share/help/C/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/C/netspeed_applet/figures/plip.png
+/usr/share/help/C/netspeed_applet/figures/ppp.png
+/usr/share/help/C/netspeed_applet/figures/settings.png
+/usr/share/help/C/netspeed_applet/figures/wavelan.png
+/usr/share/help/C/netspeed_applet/index.docbook
+/usr/share/help/C/netspeed_applet/legal.xml
 /usr/share/help/C/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/C/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/C/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -906,6 +908,17 @@ rm -rf %{buildroot}
 /usr/share/help/cs/multiload/figures/system_monitor.png
 /usr/share/help/cs/multiload/index.docbook
 /usr/share/help/cs/multiload/legal.xml
+/usr/share/help/cs/netspeed_applet/figures/details.png
+/usr/share/help/cs/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/cs/netspeed_applet/figures/ethernet.png
+/usr/share/help/cs/netspeed_applet/figures/loopback.png
+/usr/share/help/cs/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/cs/netspeed_applet/figures/plip.png
+/usr/share/help/cs/netspeed_applet/figures/ppp.png
+/usr/share/help/cs/netspeed_applet/figures/settings.png
+/usr/share/help/cs/netspeed_applet/figures/wavelan.png
+/usr/share/help/cs/netspeed_applet/index.docbook
+/usr/share/help/cs/netspeed_applet/legal.xml
 /usr/share/help/cs/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/cs/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/cs/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -993,6 +1006,17 @@ rm -rf %{buildroot}
 /usr/share/help/de/multiload/figures/system_monitor.png
 /usr/share/help/de/multiload/index.docbook
 /usr/share/help/de/multiload/legal.xml
+/usr/share/help/de/netspeed_applet/figures/details.png
+/usr/share/help/de/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/de/netspeed_applet/figures/ethernet.png
+/usr/share/help/de/netspeed_applet/figures/loopback.png
+/usr/share/help/de/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/de/netspeed_applet/figures/plip.png
+/usr/share/help/de/netspeed_applet/figures/ppp.png
+/usr/share/help/de/netspeed_applet/figures/settings.png
+/usr/share/help/de/netspeed_applet/figures/wavelan.png
+/usr/share/help/de/netspeed_applet/index.docbook
+/usr/share/help/de/netspeed_applet/legal.xml
 /usr/share/help/de/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/de/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/de/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -1060,6 +1084,17 @@ rm -rf %{buildroot}
 /usr/share/help/el/multiload/figures/system_monitor.png
 /usr/share/help/el/multiload/index.docbook
 /usr/share/help/el/multiload/legal.xml
+/usr/share/help/el/netspeed_applet/figures/details.png
+/usr/share/help/el/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/el/netspeed_applet/figures/ethernet.png
+/usr/share/help/el/netspeed_applet/figures/loopback.png
+/usr/share/help/el/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/el/netspeed_applet/figures/plip.png
+/usr/share/help/el/netspeed_applet/figures/ppp.png
+/usr/share/help/el/netspeed_applet/figures/settings.png
+/usr/share/help/el/netspeed_applet/figures/wavelan.png
+/usr/share/help/el/netspeed_applet/index.docbook
+/usr/share/help/el/netspeed_applet/legal.xml
 /usr/share/help/el/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/el/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/el/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -1194,6 +1229,17 @@ rm -rf %{buildroot}
 /usr/share/help/es/multiload/figures/system_monitor.png
 /usr/share/help/es/multiload/index.docbook
 /usr/share/help/es/multiload/legal.xml
+/usr/share/help/es/netspeed_applet/figures/details.png
+/usr/share/help/es/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/es/netspeed_applet/figures/ethernet.png
+/usr/share/help/es/netspeed_applet/figures/loopback.png
+/usr/share/help/es/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/es/netspeed_applet/figures/plip.png
+/usr/share/help/es/netspeed_applet/figures/ppp.png
+/usr/share/help/es/netspeed_applet/figures/settings.png
+/usr/share/help/es/netspeed_applet/figures/wavelan.png
+/usr/share/help/es/netspeed_applet/index.docbook
+/usr/share/help/es/netspeed_applet/legal.xml
 /usr/share/help/es/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/es/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/es/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -1395,6 +1441,17 @@ rm -rf %{buildroot}
 /usr/share/help/fr/multiload/figures/system_monitor.png
 /usr/share/help/fr/multiload/index.docbook
 /usr/share/help/fr/multiload/legal.xml
+/usr/share/help/fr/netspeed_applet/figures/details.png
+/usr/share/help/fr/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/fr/netspeed_applet/figures/ethernet.png
+/usr/share/help/fr/netspeed_applet/figures/loopback.png
+/usr/share/help/fr/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/fr/netspeed_applet/figures/plip.png
+/usr/share/help/fr/netspeed_applet/figures/ppp.png
+/usr/share/help/fr/netspeed_applet/figures/settings.png
+/usr/share/help/fr/netspeed_applet/figures/wavelan.png
+/usr/share/help/fr/netspeed_applet/index.docbook
+/usr/share/help/fr/netspeed_applet/legal.xml
 /usr/share/help/fr/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/fr/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/fr/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -1421,6 +1478,17 @@ rm -rf %{buildroot}
 /usr/share/help/hu/trashapplet/figures/trash-applet.png
 /usr/share/help/hu/trashapplet/index.docbook
 /usr/share/help/hu/trashapplet/legal.xml
+/usr/share/help/id/netspeed_applet/figures/details.png
+/usr/share/help/id/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/id/netspeed_applet/figures/ethernet.png
+/usr/share/help/id/netspeed_applet/figures/loopback.png
+/usr/share/help/id/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/id/netspeed_applet/figures/plip.png
+/usr/share/help/id/netspeed_applet/figures/ppp.png
+/usr/share/help/id/netspeed_applet/figures/settings.png
+/usr/share/help/id/netspeed_applet/figures/wavelan.png
+/usr/share/help/id/netspeed_applet/index.docbook
+/usr/share/help/id/netspeed_applet/legal.xml
 /usr/share/help/it/accessx-status/figures/accessx-status-applet.png
 /usr/share/help/it/accessx-status/figures/accessx-status-disabled.png
 /usr/share/help/it/accessx-status/figures/accessx_bounce-keys.png
@@ -1704,6 +1772,17 @@ rm -rf %{buildroot}
 /usr/share/help/pt_BR/multiload/figures/system_monitor.png
 /usr/share/help/pt_BR/multiload/index.docbook
 /usr/share/help/pt_BR/multiload/legal.xml
+/usr/share/help/pt_BR/netspeed_applet/figures/details.png
+/usr/share/help/pt_BR/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/pt_BR/netspeed_applet/figures/ethernet.png
+/usr/share/help/pt_BR/netspeed_applet/figures/loopback.png
+/usr/share/help/pt_BR/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/pt_BR/netspeed_applet/figures/plip.png
+/usr/share/help/pt_BR/netspeed_applet/figures/ppp.png
+/usr/share/help/pt_BR/netspeed_applet/figures/settings.png
+/usr/share/help/pt_BR/netspeed_applet/figures/wavelan.png
+/usr/share/help/pt_BR/netspeed_applet/index.docbook
+/usr/share/help/pt_BR/netspeed_applet/legal.xml
 /usr/share/help/pt_BR/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/pt_BR/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/pt_BR/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -1841,6 +1920,17 @@ rm -rf %{buildroot}
 /usr/share/help/sl/multiload/figures/system_monitor.png
 /usr/share/help/sl/multiload/index.docbook
 /usr/share/help/sl/multiload/legal.xml
+/usr/share/help/sl/netspeed_applet/figures/details.png
+/usr/share/help/sl/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/sl/netspeed_applet/figures/ethernet.png
+/usr/share/help/sl/netspeed_applet/figures/loopback.png
+/usr/share/help/sl/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/sl/netspeed_applet/figures/plip.png
+/usr/share/help/sl/netspeed_applet/figures/ppp.png
+/usr/share/help/sl/netspeed_applet/figures/settings.png
+/usr/share/help/sl/netspeed_applet/figures/wavelan.png
+/usr/share/help/sl/netspeed_applet/index.docbook
+/usr/share/help/sl/netspeed_applet/legal.xml
 /usr/share/help/sl/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/sl/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/sl/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -1908,6 +1998,17 @@ rm -rf %{buildroot}
 /usr/share/help/sv/multiload/figures/system_monitor.png
 /usr/share/help/sv/multiload/index.docbook
 /usr/share/help/sv/multiload/legal.xml
+/usr/share/help/sv/netspeed_applet/figures/details.png
+/usr/share/help/sv/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/sv/netspeed_applet/figures/ethernet.png
+/usr/share/help/sv/netspeed_applet/figures/loopback.png
+/usr/share/help/sv/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/sv/netspeed_applet/figures/plip.png
+/usr/share/help/sv/netspeed_applet/figures/ppp.png
+/usr/share/help/sv/netspeed_applet/figures/settings.png
+/usr/share/help/sv/netspeed_applet/figures/wavelan.png
+/usr/share/help/sv/netspeed_applet/index.docbook
+/usr/share/help/sv/netspeed_applet/legal.xml
 /usr/share/help/sv/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/sv/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/sv/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -2055,6 +2156,17 @@ rm -rf %{buildroot}
 /usr/share/help/zh_HK/geyes/figures/geyes_applet.png
 /usr/share/help/zh_HK/geyes/index.docbook
 /usr/share/help/zh_HK/geyes/legal.xml
+/usr/share/help/zh_HK/netspeed_applet/figures/details.png
+/usr/share/help/zh_HK/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/zh_HK/netspeed_applet/figures/ethernet.png
+/usr/share/help/zh_HK/netspeed_applet/figures/loopback.png
+/usr/share/help/zh_HK/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/zh_HK/netspeed_applet/figures/plip.png
+/usr/share/help/zh_HK/netspeed_applet/figures/ppp.png
+/usr/share/help/zh_HK/netspeed_applet/figures/settings.png
+/usr/share/help/zh_HK/netspeed_applet/figures/wavelan.png
+/usr/share/help/zh_HK/netspeed_applet/index.docbook
+/usr/share/help/zh_HK/netspeed_applet/legal.xml
 /usr/share/help/zh_HK/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/zh_HK/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/zh_HK/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -2068,6 +2180,17 @@ rm -rf %{buildroot}
 /usr/share/help/zh_TW/geyes/figures/geyes_applet.png
 /usr/share/help/zh_TW/geyes/index.docbook
 /usr/share/help/zh_TW/geyes/legal.xml
+/usr/share/help/zh_TW/netspeed_applet/figures/details.png
+/usr/share/help/zh_TW/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/zh_TW/netspeed_applet/figures/ethernet.png
+/usr/share/help/zh_TW/netspeed_applet/figures/loopback.png
+/usr/share/help/zh_TW/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/zh_TW/netspeed_applet/figures/plip.png
+/usr/share/help/zh_TW/netspeed_applet/figures/ppp.png
+/usr/share/help/zh_TW/netspeed_applet/figures/settings.png
+/usr/share/help/zh_TW/netspeed_applet/figures/wavelan.png
+/usr/share/help/zh_TW/netspeed_applet/index.docbook
+/usr/share/help/zh_TW/netspeed_applet/legal.xml
 /usr/share/help/zh_TW/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/zh_TW/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/zh_TW/stickynotes_applet/figures/stickynotes-note-prefs.png
