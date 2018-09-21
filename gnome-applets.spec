@@ -4,7 +4,7 @@
 #
 Name     : gnome-applets
 Version  : 3.30.0
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/gnome-applets/3.30/gnome-applets-3.30.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.30/gnome-applets-3.30.0.tar.xz
 Summary  : No detailed summary available
