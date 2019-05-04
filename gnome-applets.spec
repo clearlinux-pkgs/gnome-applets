@@ -4,16 +4,16 @@
 #
 Name     : gnome-applets
 Version  : 3.30.0
-Release  : 12
+Release  : 13
 URL      : https://download.gnome.org/sources/gnome-applets/3.30/gnome-applets-3.30.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.30/gnome-applets-3.30.0.tar.xz
-Summary  : No detailed summary available
+Summary  : Small applications for the GNOME Panel
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0
-Requires: gnome-applets-lib
-Requires: gnome-applets-license
-Requires: gnome-applets-data
-Requires: gnome-applets-locales
+Requires: gnome-applets-data = %{version}-%{release}
+Requires: gnome-applets-lib = %{version}-%{release}
+Requires: gnome-applets-license = %{version}-%{release}
+Requires: gnome-applets-locales = %{version}-%{release}
 BuildRequires : buildreq-gnome
 BuildRequires : gettext
 BuildRequires : intltool
@@ -41,11 +41,12 @@ BuildRequires : pkgconfig(sm)
 BuildRequires : pkgconfig(upower-glib)
 
 %description
-GNOME-Applets
-=============
-This package contains applets for use with the GNOME panel.  Therefore, it
-requires gnome-core to be installed.  To build all applets additional
-libraries may be needed.
+*** Sticky Notes for the Gnome Desktop Environment. ***
+This Gnome 2.2 panel applet allows you to create, view, and maintain sticky
+notes on your Gnome Desktop. Each note is "sticky" (appears on all workspaces),
+has a date stamp, and can be freely moved around your desktop. The notes are
+automatically saved and will reappear in their original locations (with their
+original dimensions) when the Gnome Desktop is restarted.
 
 %package data
 Summary: data components for the gnome-applets package.
@@ -66,8 +67,8 @@ doc components for the gnome-applets package.
 %package lib
 Summary: lib components for the gnome-applets package.
 Group: Libraries
-Requires: gnome-applets-data
-Requires: gnome-applets-license
+Requires: gnome-applets-data = %{version}-%{release}
+Requires: gnome-applets-license = %{version}-%{release}
 
 %description lib
 lib components for the gnome-applets package.
@@ -97,7 +98,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536517268
+export SOURCE_DATE_EPOCH=1556985648
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static --disable-nls
 make  %{?_smp_mflags}
 
@@ -109,11 +117,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1536517268
+export SOURCE_DATE_EPOCH=1556985648
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/gnome-applets
-cp COPYING %{buildroot}/usr/share/doc/gnome-applets/COPYING
-cp COPYING-DOCS %{buildroot}/usr/share/doc/gnome-applets/COPYING-DOCS
+mkdir -p %{buildroot}/usr/share/package-licenses/gnome-applets
+cp COPYING %{buildroot}/usr/share/package-licenses/gnome-applets/COPYING
+cp COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-applets/COPYING-DOCS
 %make_install
 %find_lang gnome-applets-3.0
 
@@ -2237,9 +2245,9 @@ cp COPYING-DOCS %{buildroot}/usr/share/doc/gnome-applets/COPYING-DOCS
 /usr/lib64/gnome-applets/libwindow-title-applet.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/gnome-applets/COPYING
-/usr/share/doc/gnome-applets/COPYING-DOCS
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/gnome-applets/COPYING
+/usr/share/package-licenses/gnome-applets/COPYING-DOCS
 
 %files locales -f gnome-applets-3.0.lang
 %defattr(-,root,root,-)
