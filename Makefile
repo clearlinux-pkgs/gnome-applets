@@ -1,5 +1,5 @@
 PKG_NAME := gnome-applets
-URL = https://download.gnome.org/sources/gnome-applets/3.32/gnome-applets-3.32.0.tar.xz
+URL = https://download.gnome.org/sources/gnome-applets/3.33/gnome-applets-3.33.92.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
