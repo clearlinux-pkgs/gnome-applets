@@ -4,7 +4,7 @@
 #
 Name     : gnome-applets
 Version  : 3.34.0
-Release  : 17
+Release  : 18
 URL      : https://download.gnome.org/sources/gnome-applets/3.34/gnome-applets-3.34.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.34/gnome-applets-3.34.0.tar.xz
 Summary  : Small applications for the GNOME Panel
