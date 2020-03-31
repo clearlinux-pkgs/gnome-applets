@@ -14,6 +14,6 @@ Configure miss: util.c:44:4: warning: format not a string literal, format string
 
 Configure miss: main.c:341:13: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
 
-Configure miss: netspeed.c:390:2: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+Configure miss: netspeed.c:380:2: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
 
-Configure miss: netspeed.c:1170:55: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+Configure miss: netspeed.c:1133:55: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]

@@ -1,3 +1,32 @@
+Version 3.36.2
+==============
+- Don't close desktop window. (#15)
+- Fix XML namespace URI in svg icons.
+- Fix invalid icon size warning from command applet.
+- Fix memory leak in cpufreq applet. (gnome-panel#21)
+- Fix possible crash in command applet. (gnome-panel#23)
+- Fix critical warnings from window-picker applet.
+- Fix icon name for mini-commander applet.
+
+Version 3.36.1
+==============
+- Fix charpick applet.
+- Fix regression in window-picker applet.
+- Fix netspeed wireless status icon size.
+- Fix build problems.
+- Updated translations.
+
+Version 3.36.0
+==============
+- Fix drag and drop issues in window-picker applet.
+- Fix memory leak in battstat applet.
+- Fix memory leak in geyes applet.
+- Port cpufreq applet to GDBus. (#2)
+- Fix crash removing window-buttons and window-title applets. (#6)
+- Add new themes for geyes applet. (!2)
+- Fix some build warnings.
+- Updated translations.
+
 Version 3.34.0
 ==============
 - No changes.
