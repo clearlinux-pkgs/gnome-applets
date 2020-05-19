@@ -1,8 +1,8 @@
 Configure miss: whether to enable debugging
 Configure miss: whether NLS is requested
 Configure miss: wireless-tools >= 28pre9
-Configure miss: GUCHARMAP
-Configure miss: TRACKER_SEARCH_BAR
+Configure miss: gucharmap-2.90 >= 2.33.0
+Configure miss: tracker-sparql-2.0
 Configure miss: jw
 Configure miss: apm_read in -lapm
 Configure miss: cpufreq.h usability
