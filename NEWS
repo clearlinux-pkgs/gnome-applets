@@ -1,28 +1,27 @@
-Version 3.36.4
+Version 3.38.0
 ==============
-- Fix crash when removing netspeed applet from panel.
+- Create sticky notes file per-applet. (!61)
+- Updated translations.
 
-Version 3.36.3
+Version 3.37.2
 ==============
-- Fix Nautilus desktop file id in drive-mount applet.
-- Fix TaskItem signal handling in window-picker applet. (!62)
+- Re-release with tarball from srcdir.
 
-Version 3.36.2
+Version 3.37.1
 ==============
 - Don't close desktop window. (#15)
+- Fix "Pause timer" menu item accelerator. (#16)
 - Fix XML namespace URI in svg icons.
 - Fix invalid icon size warning from command applet.
 - Fix memory leak in cpufreq applet. (gnome-panel#21)
 - Fix possible crash in command applet. (gnome-panel#23)
 - Fix critical warnings from window-picker applet.
 - Fix icon name for mini-commander applet.
-
-Version 3.36.1
-==============
 - Fix charpick applet.
 - Fix regression in window-picker applet.
 - Fix netspeed wireless status icon size.
 - Fix build problems.
+- Port applets to new library.
 - Updated translations.
 
 Version 3.36.0

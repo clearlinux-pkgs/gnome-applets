@@ -1,19 +1,7 @@
 Configure miss: whether to enable debugging
-Configure miss: whether NLS is requested
 Configure miss: wireless-tools >= 28pre9
 Configure miss: gucharmap-2.90 >= 2.33.0
 Configure miss: tracker-sparql-2.0
-Configure miss: jw
-Configure miss: apm_read in -lapm
 Configure miss: cpufreq.h usability
 Configure miss: cpufreq.h presence
 Configure miss: cpufreq.h
-Configure miss: drive-button.c:550:50: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: util.c:44:4: warning: format not a string literal, format string not checked [-Wformat-nonliteral]
-
-Configure miss: main.c:341:13: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: netspeed.c:380:2: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: netspeed.c:1135:55: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]

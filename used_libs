@@ -6,13 +6,13 @@ libgdk-3.so.0
 libgdk_pixbuf-2.0.so.0
 libgio-2.0.so.0
 libglib-2.0.so.0
+libgnome-panel.so.0
 libgobject-2.0.so.0
 libgtk-3.so.0
 libgtop-2.0.so.11
 libgweather-3.so.16
 libm.so.6
 libnotify.so.4
-libpanel-applet.so.3
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
 libpthread.so.0
