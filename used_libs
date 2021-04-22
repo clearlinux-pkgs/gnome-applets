@@ -16,6 +16,7 @@ libnotify.so.4
 libpango-1.0.so.0
 libpangocairo-1.0.so.0
 libpthread.so.0
+libtracker-sparql-3.0.so.0
 libupower-glib.so.3
 libwnck-3.so.0
 libxml2.so.2
