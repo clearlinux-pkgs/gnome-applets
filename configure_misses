@@ -1,6 +1,4 @@
 Configure miss: cpufreq.h
-Configure miss: cpufreq.h presence
-Configure miss: cpufreq.h usability
 Configure miss: gucharmap-2.90 >= 2.33.0
 Configure miss: whether to enable debugging
 Configure miss: wireless-tools >= 28pre9
