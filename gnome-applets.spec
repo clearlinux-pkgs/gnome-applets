@@ -4,7 +4,7 @@
 #
 Name     : gnome-applets
 Version  : 3.44.0
-Release  : 29
+Release  : 30
 URL      : https://download.gnome.org/sources/gnome-applets/3.44/gnome-applets-3.44.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.44/gnome-applets-3.44.0.tar.xz
 Summary  : No detailed summary available
@@ -95,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647895091
+export SOURCE_DATE_EPOCH=1664146846
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -115,11 +115,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1647895091
+export SOURCE_DATE_EPOCH=1664146846
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-applets
-cp %{_builddir}/gnome-applets-3.44.0/COPYING %{buildroot}/usr/share/package-licenses/gnome-applets/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/gnome-applets-3.44.0/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-applets/c61905dc64311e8bcee6afc425fa40f917a45131
+cp %{_builddir}/gnome-applets-%{version}/COPYING %{buildroot}/usr/share/package-licenses/gnome-applets/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-applets/c61905dc64311e8bcee6afc425fa40f917a45131 || :
 %make_install
 %find_lang gnome-applets
 
