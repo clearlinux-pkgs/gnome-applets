@@ -4,10 +4,10 @@
 # Using build pattern: configure
 #
 Name     : gnome-applets
-Version  : 3.46.0
-Release  : 32
-URL      : https://download.gnome.org/sources/gnome-applets/3.46/gnome-applets-3.46.0.tar.xz
-Source0  : https://download.gnome.org/sources/gnome-applets/3.46/gnome-applets-3.46.0.tar.xz
+Version  : 3.50.0
+Release  : 33
+URL      : https://download.gnome.org/sources/gnome-applets/3.50/gnome-applets-3.50.0.tar.xz
+Source0  : https://download.gnome.org/sources/gnome-applets/3.50/gnome-applets-3.50.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0
@@ -47,7 +47,9 @@ BuildRequires : pkgconfig(xproto)
 %define debug_package %{nil}
 
 %description
-
+# Equinox Glass theme for Window Buttons applet
+# Created by eMcE
+# Contains images from Tiheum's Equinox Glass GTK theme
 
 %package data
 Summary: data components for the gnome-applets package.
@@ -92,41 +94,60 @@ locales components for the gnome-applets package.
 
 
 %prep
-%setup -q -n gnome-applets-3.46.0
-cd %{_builddir}/gnome-applets-3.46.0
+%setup -q -n gnome-applets-3.50.0
+cd %{_builddir}/gnome-applets-3.50.0
+pushd ..
+cp -a gnome-applets-3.50.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680026395
+export SOURCE_DATE_EPOCH=1695678898
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static --enable-nls
 make  %{?_smp_mflags}
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
+%configure --disable-static --enable-nls
+make  %{?_smp_mflags}
+popd
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
+cd ../buildavx2;
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1680026395
+export SOURCE_DATE_EPOCH=1695678898
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-applets
 cp %{_builddir}/gnome-applets-%{version}/COPYING %{buildroot}/usr/share/package-licenses/gnome-applets/4cc77b90af91e615a64ae04893fdffa7939db84c || :
 cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-applets/c61905dc64311e8bcee6afc425fa40f917a45131 || :
+pushd ../buildavx2/
+%make_install_v3
+popd
 %make_install
 %find_lang gnome-applets
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -1483,6 +1504,19 @@ cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/pac
 /usr/share/help/gl/accessx-status/figures/accessx_sticky-windows-key.png
 /usr/share/help/gl/accessx-status/index.docbook
 /usr/share/help/gl/accessx-status/legal.xml
+/usr/share/help/hu/accessx-status/figures/accessx-status-applet.png
+/usr/share/help/hu/accessx-status/figures/accessx-status-disabled.png
+/usr/share/help/hu/accessx-status/figures/accessx_bounce-keys.png
+/usr/share/help/hu/accessx-status/figures/accessx_mouse-keys.png
+/usr/share/help/hu/accessx-status/figures/accessx_slow-keys.png
+/usr/share/help/hu/accessx-status/figures/accessx_sticky-altGr-key.png
+/usr/share/help/hu/accessx-status/figures/accessx_sticky-ctrl-key.png
+/usr/share/help/hu/accessx-status/figures/accessx_sticky-keys.png
+/usr/share/help/hu/accessx-status/figures/accessx_sticky-meta-key.png
+/usr/share/help/hu/accessx-status/figures/accessx_sticky-shift-key.png
+/usr/share/help/hu/accessx-status/figures/accessx_sticky-windows-key.png
+/usr/share/help/hu/accessx-status/index.docbook
+/usr/share/help/hu/accessx-status/legal.xml
 /usr/share/help/hu/battstat/figures/battstat-applet-expanded.png
 /usr/share/help/hu/battstat/figures/battstat-applet.png
 /usr/share/help/hu/battstat/figures/battstat-credits-hal.png
@@ -1490,6 +1524,9 @@ cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/pac
 /usr/share/help/hu/battstat/figures/context-menu.png
 /usr/share/help/hu/battstat/index.docbook
 /usr/share/help/hu/battstat/legal.xml
+/usr/share/help/hu/geyes/figures/geyes_applet.png
+/usr/share/help/hu/geyes/index.docbook
+/usr/share/help/hu/geyes/legal.xml
 /usr/share/help/hu/trashapplet/figures/trash-applet.png
 /usr/share/help/hu/trashapplet/index.docbook
 /usr/share/help/hu/trashapplet/legal.xml
@@ -1846,6 +1883,13 @@ cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/pac
 /usr/share/help/ro/trashapplet/figures/trash-applet.png
 /usr/share/help/ro/trashapplet/index.docbook
 /usr/share/help/ro/trashapplet/legal.xml
+/usr/share/help/ru/battstat/figures/battstat-applet-expanded.png
+/usr/share/help/ru/battstat/figures/battstat-applet.png
+/usr/share/help/ru/battstat/figures/battstat-credits-hal.png
+/usr/share/help/ru/battstat/figures/battstat-preferences.png
+/usr/share/help/ru/battstat/figures/context-menu.png
+/usr/share/help/ru/battstat/index.docbook
+/usr/share/help/ru/battstat/legal.xml
 /usr/share/help/ru/char-palette/figures/charpalette_applet.png
 /usr/share/help/ru/char-palette/figures/charpalette_chargroup.png
 /usr/share/help/ru/char-palette/figures/charpick-preferences.png
@@ -1883,6 +1927,17 @@ cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/pac
 /usr/share/help/ru/multiload/figures/system_monitor.png
 /usr/share/help/ru/multiload/index.docbook
 /usr/share/help/ru/multiload/legal.xml
+/usr/share/help/ru/netspeed_applet/figures/details.png
+/usr/share/help/ru/netspeed_applet/figures/eth_sum_48.png
+/usr/share/help/ru/netspeed_applet/figures/ethernet.png
+/usr/share/help/ru/netspeed_applet/figures/loopback.png
+/usr/share/help/ru/netspeed_applet/figures/netspeed_applet.png
+/usr/share/help/ru/netspeed_applet/figures/plip.png
+/usr/share/help/ru/netspeed_applet/figures/ppp.png
+/usr/share/help/ru/netspeed_applet/figures/settings.png
+/usr/share/help/ru/netspeed_applet/figures/wavelan.png
+/usr/share/help/ru/netspeed_applet/index.docbook
+/usr/share/help/ru/netspeed_applet/legal.xml
 /usr/share/help/ru/stickynotes_applet/figures/stickynote-right-menu-lock.png
 /usr/share/help/ru/stickynotes_applet/figures/stickynote-right-menu-new.png
 /usr/share/help/ru/stickynotes_applet/figures/stickynotes-note-prefs.png
@@ -2059,6 +2114,9 @@ cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/pac
 /usr/share/help/sv/trashapplet/figures/trash-applet.png
 /usr/share/help/sv/trashapplet/index.docbook
 /usr/share/help/sv/trashapplet/legal.xml
+/usr/share/help/tr/geyes/figures/geyes_applet.png
+/usr/share/help/tr/geyes/index.docbook
+/usr/share/help/tr/geyes/legal.xml
 /usr/share/help/uk/accessx-status/figures/accessx-status-applet.png
 /usr/share/help/uk/accessx-status/figures/accessx-status-disabled.png
 /usr/share/help/uk/accessx-status/figures/accessx_bounce-keys.png
@@ -2254,6 +2312,7 @@ cp %{_builddir}/gnome-applets-%{version}/COPYING-DOCS %{buildroot}/usr/share/pac
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/gnome-panel/modules/org.gnome.gnome-applets.so
 /usr/lib64/gnome-panel/modules/org.gnome.gnome-applets.so
 
 %files license
