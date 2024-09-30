@@ -7,7 +7,7 @@
 #
 Name     : gnome-applets
 Version  : 3.52.0
-Release  : 35
+Release  : 36
 URL      : https://download.gnome.org/sources/gnome-applets/3.52/gnome-applets-3.52.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-applets/3.52/gnome-applets-3.52.0.tar.xz
 Summary  : No detailed summary available
